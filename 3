@@ -1,0 +1,15 @@
+SELECT 
+    usuarios.nome AS USUARIO, 
+    bibliotecarios.nome AS BIBLIOTECARIO, 
+    emprestimos.codigo_livro AS LIVRO, 
+    emprestimos.data_emprestimo AS DATA_EMPRESTIMO
+FROM 
+    emprestimos
+JOIN 
+    usuarios ON emprestimos.codigo_usuario = usuarios.codigo
+JOIN 
+    bibliotecarios ON emprestimos.codigo_bibliotecario = bibliotecarios.codigo
+WHERE 
+    emprestimos.data_devolucao IS NULL
+ORDER BY 
+    usuarios.nome ASC;
